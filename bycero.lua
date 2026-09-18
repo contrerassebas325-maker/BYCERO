@@ -623,15 +623,23 @@ local function sendWebhook(titulo,mensaje,color)
     local req=request or http_request or (syn and syn.request) or (http and http.request)
     if not req then return false end
     local gname="?"
-    pcall(function() gname=MPS:GetProductInfo(game.PlaceId).Name end)
+    pcall(function()
+        gname=MPS:GetProductInfo(game.PlaceId).Name
+    end)
+    local campos={}
+    table.insert(campos,{name="Jugador",value=player.Name,inline=true})
+    table.insert(campos,{name="Display",value=player.DisplayName,inline=true})
+    table.insert(campos,{name="Juego",value=gname,inline=true})
+    table.insert(campos,{name="Place ID",value=tostring(game.PlaceId),inline=true})
     local data=HttpSvc:JSONEncode({
-    username="Bycero Hub Logger",
-    embeds={{title=titulo,description=mensaje,color=color or 10040575,
-        fields={{name="Jugador",value=player.Name,inline=true},{name="Display",value=player.DisplayName,inline=true},{name="Juego",value=gname,inline=true},{name="Place ID",value=tostring(game.PlaceId),inline=true}},
-        footer={text="Bycero Hub v1.3.1"}}})
-    local ok=pcall(function() req({Url=WEBHOOK_URL,Method="POST",Headers={["Content-Type"]="application/json"},Body=data}) end)
+        username="Bycero Hub Logger",
+        embeds={{title=titulo,description=mensaje,color=color or 10040575,fields=campos,footer={text="Bycero Hub v1.3.1"}}}
+    })
+    local ok=pcall(function()
+        req({Url=WEBHOOK_URL,Method="POST",Headers={["Content-Type"]="application/json"},Body=data})
+    end)
     return ok
-        end
+end
 -- PARTE 4/6
 local speedEnabled,walkSpeed=false,50
 local noclipEnabled=false
