@@ -625,13 +625,13 @@ local function sendWebhook(titulo,mensaje,color)
     local gname="?"
     pcall(function() gname=MPS:GetProductInfo(game.PlaceId).Name end)
     local data=HttpSvc:JSONEncode({
-        username="Bycero Hub Logger",
-        embeds={{title=titulo,description=mensaje,color=color or 10040575,
-            fields={{name="Jugador",value=player.Name,inline=true},{name="Display",value=player.DisplayName,inline=true},{name="Juego",value=gname,inline=true},{name="Place ID",value=tostring(game.PlaceId),inline=true}},
-            footer={text="Bycero Hub v1.3.1"}}})
+    username="Bycero Hub Logger",
+    embeds={{title=titulo,description=mensaje,color=color or 10040575,
+        fields={{name="Jugador",value=player.Name,inline=true},{name="Display",value=player.DisplayName,inline=true},{name="Juego",value=gname,inline=true},{name="Place ID",value=tostring(game.PlaceId),inline=true}},
+        footer={text="Bycero Hub v1.3.1"}}})
     local ok=pcall(function() req({Url=WEBHOOK_URL,Method="POST",Headers={["Content-Type"]="application/json"},Body=data}) end)
     return ok
-end
+        end
 -- PARTE 4/6
 local speedEnabled,walkSpeed=false,50
 local noclipEnabled=false
