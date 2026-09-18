@@ -1701,6 +1701,9 @@ makeDropdown(TabAnim.Page,"Elegir Paquete",animList,"Ninguno",function(v) select
 section(TabAnim.Page," ")
 section(TabAnim.Page," ")
 section(TabAnim.Page," ")
+section(TabAnim.Page," ")
+section(TabAnim.Page," ")
+section(TabAnim.Page," ")
 makeButton(TabAnim.Page,"Aplicar Paquete",function()
     if selectedPack=="Ninguno" then
         notify("Elige un paquete primero")
