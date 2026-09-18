@@ -1698,6 +1698,9 @@ table.sort(animList)
 section(TabAnim.Page,"PAQUETES COMPLETOS")
 local selectedPack="Ninguno"
 makeDropdown(TabAnim.Page,"Elegir Paquete",animList,"Ninguno",function(v) selectedPack=v end)
+section(TabAnim.Page," ")
+section(TabAnim.Page," ")
+section(TabAnim.Page," ")
 makeButton(TabAnim.Page,"Aplicar Paquete",function()
     if selectedPack=="Ninguno" then
         notify("Elige un paquete primero")
