@@ -129,8 +129,8 @@ local function notify(text)
 end
 
 local Win=Instance.new("Frame")
-Win.Size=UDim2.new(0,440,0,300)
-Win.Position=UDim2.new(0.5,-220,0.5,-150)
+Win.Size=UDim2.new(0,520,0,360)
+Win.Position=UDim2.new(0.5,-260,0.5,-180)
 Win.BackgroundColor3=C.Bg
 Win.BorderSizePixel=0
 Win.Visible=true
@@ -611,8 +611,8 @@ local function makeDropdown(parent,title,values,default,callback)
         isOpen=not isOpen
         if isOpen then
             list.Visible=true
-            local h=#values*22+8
-            tween(list,0.15,{Size=UDim2.new(1,0,0,math.min(h,130))})
+            local h=#values*18+6
+            tween(list,0.15,{Size=UDim2.new(1,0,0,math.min(h,110))})
             arrow.Text="^"
         else closeList() end
     end)
